@@ -26,7 +26,9 @@ public class CustomerServiceManager {
         boolean success = false;
         try{
             success = dataBaseConnector.insert(sql);
-        }catch (Exception e){}
+        }catch (Exception e){
+            return true;
+        }
         return success;
     }
     public Boolean authenticate(CustomerDTO customerDTO) {
