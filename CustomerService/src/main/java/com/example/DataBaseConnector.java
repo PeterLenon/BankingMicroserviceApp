@@ -2,6 +2,7 @@ package com.example;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -18,19 +19,19 @@ public class DataBaseConnector {
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
             connection = DriverManager.getConnection(url, username, password);
-            return true;
         } catch (Exception e){
             return false;
         }
+        return true;
     }
 
-    private Boolean disconnect(){
+    private @NotNull Boolean disconnect(){
         try{
             connection.close();
-            return true;
         }catch (Exception e){
             return false;
         }
+        return true;
     }
 
     public String get(String sql){
